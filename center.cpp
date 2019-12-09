@@ -1,71 +1,71 @@
 #include "center.h"
 
-void center::setJobNumber(int jobNumber)
+void Center::setJobNumber(int jobNumber)
 {
 	this->jobNumber = jobNumber;
 }
 
-int center::getJobNumber()
+int Center::getJobNumber()
 {
 	return this->jobNumber;
 }
 
-void center::setJobHours(double jobHours)
+void Center::setJobHours(double jobHours)
 {
 	this->jobHours = jobHours;
 }
 
-double center::getJobHours()
+double Center::getJobHours()
 {
 	return this->jobHours;
 }
 
-void center::setAverageWaitTime(double averageWaitTime)
+void Center::setAverageWaitTime(double averageWaitTime)
 {
 	this->averageWaitTime = averageWaitTime;
 }
 
-double center::getAverageWaitTime()
+double Center::getAverageWaitTime()
 {
 	return this->averageWaitTime;
 }
 
-void center::setAverageTime(double averageTime)
+void Center::setAverageTime(double averageTime)
 {
 	this->averageTime = averageTime;
 }
 
-double center::getAverageTime()
+double Center::getAverageTime()
 {
 	return this->averageTime;
 }
 
-void center::setTimeCost(double timeCost)
+void Center::setTimeCost(double timeCost)
 {
 	this->timeCost = timeCost;
 }
 
-double center::getTimeCost()
+double Center::getTimeCost()
 {
 	return timeCost;
 }
 
-void center::setProfit(double profit)
+void Center::setProfit(double profit)
 {
 	this->profit = profit;
 }
 
-double center::getProfit()
+double Center::getProfit()
 {
 	return this->profit;
 }
 
-void center::setJobTimeCost(double jobTimeCost)
+void Center::setJobTimeCost(double jobTimeCost)
 {
 	this->jobTimeCost = jobTimeCost;
 }
 
-double center::getJobTimeCost()
+double Center::getJobTimeCost()
 {
 	return this->jobTimeCost;
 }

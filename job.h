@@ -1,9 +1,7 @@
-#include<stdio.h>
-#include<iostream>
-#include<string>
 
 
-class job {
+
+class Job {
 
 private:
 	int jobID;

@@ -1,6 +1,6 @@
 #include "user.h"
 
-class user_student : public user {
+class User_student : public User {
 private:
 	char groupType;
 public:

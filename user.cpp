@@ -1,45 +1,45 @@
 #include "user.h"
 
-	 void user::setUserID(int userID) {
+	 void User::setUserID(int userID) {
 		this->userID = userID;
 	}
-	int user::getUserID() {
+	int User::getUserID() {
 	return this->userID;
 	}
-	void user::setResource(double resource) {
+	void User::setResource(double resource) {
 		this->resource = resource;
 	}
-	double user::getResource() {
+	double User::getResource() {
 		return this->resource;
 	}
-	void user::setTimeCost(double timeCost) {
+	void User::setTimeCost(double timeCost) {
 		this->timeCost = timeCost;
 	}
-	double user::getTimeCost() {
+	double User::getTimeCost() {
 		return this->timeCost;
 	}
-	void user::setPriceCost(double priceCost) {
+	void User::setPriceCost(double priceCost) {
 		this->priceCost = priceCost;
 	}
-	double user::getPriceCost() {
+	double User::getPriceCost() {
 		return this->priceCost;
 	}
-	void user::setJobNumber(int jobNumber) {
+	void User::setJobNumber(int jobNumber) {
 		this->jobNumber = jobNumber;
 	}
-	int user::getJobNumber() {
+	int User::getJobNumber() {
 		return this->jobNumber;
 	}
-	void user::setNodeNumber(int nodeNumber) {
+	void User::setNodeNumber(int nodeNumber) {
 		this->nodeNumber = nodeNumber;
 	}
-	int user::getNodeNumber() {
+	int User::getNodeNumber() {
 		return this->nodeNumber;
 	}
-	void user::setNodeHours(double nodeHours) {
+	void User::setNodeHours(double nodeHours) {
 		this->nodeHours = nodeHours;
 	}
-	double user::getNodeHours() {
+	double User::getNodeHours() {
 		return this->nodeHours;
 	}
 

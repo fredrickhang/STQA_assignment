@@ -1,4 +1,4 @@
-class user {
+class User {
 private:
 	int userID;
 	double resource;

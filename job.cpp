@@ -3,64 +3,64 @@
 #include<string>
 #include "job.h"
 
-void job::setjobID(int jobid) {
+void Job::setjobID(int jobid) {
 	this->jobID = jobid;
 }
 
-int job::getjobID() {
+int Job::getjobID() {
 	return jobID;
 }
 
-void job::setjobType(char type) {
+void Job::setjobType(char type) {
 	this->jobType = type;
 }
 
-char job::getjobType() {
+char Job::getjobType() {
 	return jobType;
 }
 
-void job::setuserID(int userid) {
+void Job::setuserID(int userid) {
 	this->userID = userid;
 }
 
-int job::getuserID() {
+int Job::getuserID() {
 	return userID;
 }
 
-void job::settimeCurrent(double timecurrent) {
+void Job::settimeCurrent(double timecurrent) {
 	this->timeCurrent = timecurrent;
 }
 
-double job::gettimeCurrent() {
+double Job::gettimeCurrent() {
 	return timeCurrent;
 }
 
-void job::settimeFinish(double timefinish) {
+void Job::settimeFinish(double timefinish) {
 	this->timeFinish = timefinish;
 }
-double job::gettimeFinish() {
+double Job::gettimeFinish() {
 	return timeFinish;
 }
 
-void job::settimeGeneration(double timegeneration) {
+void Job::settimeGeneration(double timegeneration) {
 	this->timeGeneration = timegeneration;
 }
 
-double job::gettimeGeneration() {
+double Job::gettimeGeneration() {
 	return timeGeneration;
 }
 
-void job::settimeStart(double timestart) {
+void Job::settimeStart(double timestart) {
 	this->timeStart = timestart;
 }
 
-double job::gettimeStart() {
+double Job::gettimeStart() {
 	return timeStart;
 }
 
-void job::setjobTime(double jobtime) {
+void Job::setjobTime(double jobtime) {
 	this->jobTime = jobtime;
 }
-double job::getjobTime() {
+double Job::getjobTime() {
 	return jobTime;
 }

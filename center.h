@@ -1,4 +1,4 @@
-class center {
+class Center {
 private:
 	int jobNumber;
 	double jobHours;

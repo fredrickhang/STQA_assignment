@@ -1,11 +1,11 @@
 #include "user_student.h"
 
-void user_student::setGroupType(char groupType)
+void User_student::setGroupType(char groupType)
 {
 	this->groupType = groupType;
 }
 
-int user_student::getGroupType()
+int User_student::getGroupType()
 {
 
 	return this->groupType;
