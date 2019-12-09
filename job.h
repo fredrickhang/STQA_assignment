@@ -9,6 +9,7 @@ private:
 	int jobID;
 	int userID;
 	char jobType;
+	double jobTime;
 	double timeGeneration;
 	double timeStart;
 	double timeFinish;
@@ -35,5 +36,6 @@ public:
 	void settimeCurrent(double timecurrent) {}
 	double gettimeCurrent() {}
 
-
+	void setjobTime(double jobtime) {}
+	double getjobTime() {}
 };

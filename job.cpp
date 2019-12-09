@@ -11,8 +11,8 @@ int job::getjobID() {
 	return jobID;
 }
 
-void job::getjobType(char type) {
-	this->getjobType = type;
+void job::setjobType(char type) {
+	this->jobType = type;
 }
 
 char job::getjobType() {
@@ -56,4 +56,11 @@ void job::settimeStart(double timestart) {
 
 double job::gettimeStart() {
 	return timeStart;
+}
+
+void job::setjobTime(double jobtime) {
+	this->jobTime = jobtime;
+}
+double job::getjobTime() {
+	return jobTime;
 }
