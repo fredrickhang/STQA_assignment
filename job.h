@@ -1,11 +1,11 @@
-
-
+#include<string>
+using namespace std;
 
 class Job {
 
 private:
 	int jobID;
-	int userType;
+	string userType;
 	char jobType;
 	int jobProcesser;
 	double jobTime;
@@ -15,7 +15,7 @@ private:
 	double timeCurrent;
 	bool useGPU;
 	double waitingTime;
-
+	
 public:
 	void setjobID(int jobid);
 	int getjobID();
@@ -24,8 +24,8 @@ public:
 	int getjobProcesser();
 
 
-	void setuserType(int usertype);
-	int getuserType();
+	void setuserType(string usertype);
+	string getuserType();
 
 	void setjobType(char type);
 	char getjobType();

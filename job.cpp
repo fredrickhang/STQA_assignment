@@ -26,6 +26,11 @@ void Job::setuserType(int usertype)
 	this->userType = usertype;
 }
 
+void Job::setuserType(string usertype)
+{
+	this->userType = usertype;
+}
+
 int Job::getuserType()
 {
 	return userType;
