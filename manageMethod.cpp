@@ -38,7 +38,7 @@ Center manageMethod(queue<Job> joblist,Center machine) {
 
 	while (finishNum<num) {
 	
-		if (works[jobnum].getjobType=='short'&&works[jobnum].getwaitingTime==0) {
+		if (works[jobnum].getjobType=="short"&&works[jobnum].getwaitingTime==0) {
 			if (works[jobnum].getjobProcesser < smallProcesser) {
 				smallProcesser = smallProcesser - works[jobnum].getjobProcesser;
 				works[jobnum].settimeStart = timecost;
@@ -47,7 +47,7 @@ Center manageMethod(queue<Job> joblist,Center machine) {
 				jobnum = jobnum + 1;
 			}
 		}
-		else if(works[jobnum].getjobType=='medium'&&works[jobnum].getwaitingTime == 0){
+		else if(works[jobnum].getjobType=="medium"&&works[jobnum].getwaitingTime == 0){
 			if (works[jobnum].getjobProcesser < mediumProcesser) {
 				mediumProcesser = mediumProcesser - works[jobnum].getjobProcesser;
 				works[jobnum].settimeStart = timecost;
@@ -57,7 +57,7 @@ Center manageMethod(queue<Job> joblist,Center machine) {
 
 			}
 		}
-		else if (works[jobnum].getjobType=='large' && works[jobnum].getwaitingTime == 0) {
+		else if (works[jobnum].getjobType=="large" && works[jobnum].getwaitingTime == 0) {
 			if (works[jobnum].getjobProcesser < largeProcesser) {
 				largeProcesser = largeProcesser - works[jobnum].getjobProcesser;
 				works[jobnum].settimeStart = timecost;
@@ -75,7 +75,7 @@ Center manageMethod(queue<Job> joblist,Center machine) {
 
 			}
 			else if (working[i].gettimeCurrent = 0) {
-				if (working[i].getjobType == 'short') {
+				if (working[i].getjobType == "short") {
 					
 						smallProcesser = smallProcesser + working[i].getjobProcesser;
 						working[i].settimeCurrent(-1);
@@ -83,14 +83,14 @@ Center manageMethod(queue<Job> joblist,Center machine) {
 						finishNum = finishNum + 1;
 					
 				}
-				else if (working[i].getjobType == 'medium') {
+				else if (working[i].getjobType == "medium") {
 					
 						mediumProcesser = mediumProcesser + working[i].getjobProcesser;
 						working[i].settimeCurrent(-1);
 						working[i].settimeFinish = timecost;
 						finishNum = finishNum + 1;
 				}
-				else if (working[i].getjobType == 'large') {
+				else if (working[i].getjobType == "large") {
 					
 						largeProcesser = largeProcesser + working[i].getjobProcesser;
 						working[i].settimeCurrent(-1);

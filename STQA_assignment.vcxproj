@@ -127,6 +127,7 @@
     <ClCompile Include="inputMethod.cpp" />
     <ClCompile Include="job.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="manageMethod.cpp" />
     <ClCompile Include="resource.cpp" />
     <ClCompile Include="stringSplitTools.cpp" />
     <ClCompile Include="user.cpp" />
@@ -135,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="center.h" />
     <ClInclude Include="job.h" />
+    <ClInclude Include="manageMethod.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="user_student.h" />
