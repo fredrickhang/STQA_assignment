@@ -124,13 +124,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="center.cpp" />
+    <ClCompile Include="inputMethod.cpp" />
     <ClCompile Include="job.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="resource.cpp" />
+    <ClCompile Include="stringSplitTools.cpp" />
     <ClCompile Include="user.cpp" />
     <ClCompile Include="user_student.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="center.h" />
     <ClInclude Include="job.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="user_student.h" />
   </ItemGroup>

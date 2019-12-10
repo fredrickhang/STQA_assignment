@@ -1,4 +1,4 @@
-class Resource{
+class Resource {
 private:
 	char userType;
 	double groupResource;
@@ -12,4 +12,4 @@ public:
 	char getGroupType();
 
 
-}
+};

@@ -1,7 +1,6 @@
 #include"resource.h"
 
-void Resource::setUserType(char userType)
-{
+void Resource::setUserType(char userType){
 	this->userType = userType;
 }
 
