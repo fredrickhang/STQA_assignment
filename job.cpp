@@ -21,15 +21,11 @@ int Job::getjobProcesser()
 	return jobProcesser;
 }
 
-void Job::setuserType(int usertype)
-{
-	this->userType = usertype;
-}
-
 void Job::setuserType(string usertype)
 {
 	this->userType = usertype;
 }
+
 
 string Job::getuserType()
 {
@@ -44,13 +40,6 @@ string Job::getjobType() {
 	return jobType;
 }
 
-void Job::setuserID(int userid) {
-	this->userID = userid;
-}
-
-int Job::getuserID() {
-	return userID;
-}
 
 void Job::settimeCurrent(double timecurrent) {
 	this->timeCurrent = timecurrent;
