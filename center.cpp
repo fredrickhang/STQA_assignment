@@ -69,3 +69,13 @@ double Center::getJobTimeCost()
 {
 	return this->jobTimeCost;
 }
+
+void Center::setcurrentProcesser(int currentprocesser)
+{
+	this->currentProcesser = currentprocesser;
+}
+
+int Center::getcurrentProcesser()
+{
+	return currentProcesser;
+}

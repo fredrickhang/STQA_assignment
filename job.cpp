@@ -11,6 +11,26 @@ int Job::getjobID() {
 	return jobID;
 }
 
+void Job::setjobProcesser(int jobprocesser)
+{
+	this->jobProcesser = jobprocesser;
+}
+
+int Job::getjobProcesser()
+{
+	return jobProcesser;
+}
+
+void Job::setuserType(int usertype)
+{
+	this->userType = usertype;
+}
+
+int Job::getuserType()
+{
+	return userType;
+}
+
 void Job::setjobType(char type) {
 	this->jobType = type;
 }
@@ -63,4 +83,24 @@ void Job::setjobTime(double jobtime) {
 }
 double Job::getjobTime() {
 	return jobTime;
+}
+
+void Job::setwaitingTime(double waitingtime)
+{
+	this->waitingTime = waitingtime;
+}
+
+double Job::getwaitingTime()
+{
+	return waitingTime;
+}
+
+void Job::setuseGPU(bool usegpu)
+{
+	this->useGPU = usegpu;
+}
+
+bool Job::getuseGPU()
+{
+	return useGPU;
 }
