@@ -15,8 +15,12 @@ private:
 	double timeCurrent;
 	string useGPU;
 	double waitingTime;
+	double Resource;
 	
 public:
+	void setResource(double resource);
+	double getResource();
+
 	void setjobID(int jobid);
 	int getjobID();
 
