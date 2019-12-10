@@ -5,19 +5,27 @@ class Job {
 
 private:
 	int jobID;
-	int userID;
+	int userType;
 	char jobType;
+	int jobProcesser;
 	double jobTime;
 	double timeGeneration;
 	double timeStart;
 	double timeFinish;
 	double timeCurrent;
+	bool useGPU;
+	double waitingTime;
+
 public:
 	void setjobID(int jobid);
 	int getjobID();
 
-	void setuserID(int userid);
-	int getuserID();
+	void setjobProcesser(int jobprocesser);
+	int getjobProcesser();
+
+
+	void setuserType(int usertype);
+	int getuserType();
 
 	void setjobType(char type);
 	char getjobType();
@@ -36,4 +44,10 @@ public:
 
 	void setjobTime(double jobtime);
 	double getjobTime();
+
+	void setwaitingTime(double waitingtime);
+	double getwaitingTime();
+
+	void setuseGPU(bool usegpu);
+	bool getuseGPU();
 };

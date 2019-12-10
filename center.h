@@ -7,6 +7,7 @@ private:
 	double profit;
 	double jobTimeCost;
 	double timeCost; //sum the time when the center begin
+	int currentProcesser;
 
 public:
 	void setJobNumber(int jobNumber);
@@ -23,6 +24,8 @@ public:
 	double getProfit();
 	void setJobTimeCost(double jobTimeCost);
 	double getJobTimeCost();
+	void setcurrentProcesser(int currentprocesser);
+	int getcurrentProcesser();
 
 
 };
