@@ -32,7 +32,7 @@ string Job::getuserType()
 	return userType;
 }
 
-void Job::setjobType(char type) {
+void Job::setjobType(string type) {
 	this->jobType = type;
 }
 
@@ -89,12 +89,12 @@ double Job::getwaitingTime()
 	return waitingTime;
 }
 
-void Job::setuseGPU(bool usegpu)
+void Job::setuseGPU(string usegpu)
 {
 	this->useGPU = usegpu;
 }
 
-bool Job::getuseGPU()
+string Job::getuseGPU()
 {
 	return useGPU;
 }

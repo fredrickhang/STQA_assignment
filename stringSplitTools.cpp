@@ -1,9 +1,4 @@
-#include <string>
-#include <vector>
-
-
-using namespace std;
-
+#include "stringSplitTools.h"
 
 
 vector<string>  split(const string& str, const string& delim) {

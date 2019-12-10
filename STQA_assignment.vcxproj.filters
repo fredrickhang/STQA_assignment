@@ -60,7 +60,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="manageMethod.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputMethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringSplitTools.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

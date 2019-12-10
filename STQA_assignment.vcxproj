@@ -135,9 +135,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="center.h" />
+    <ClInclude Include="inputMethod.h" />
     <ClInclude Include="job.h" />
     <ClInclude Include="manageMethod.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="stringSplitTools.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="user_student.h" />
   </ItemGroup>
