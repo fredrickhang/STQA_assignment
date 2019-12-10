@@ -13,10 +13,11 @@ private:
 	double timeStart;
 	double timeFinish;
 	double timeCurrent;
-	bool useGPU;
+	string useGPU;
 	double waitingTime;
 	
 public:
+
 	void setjobID(int jobid);
 	int getjobID();
 
@@ -27,7 +28,7 @@ public:
 	void setuserType(string usertype);
 	string getuserType();
 
-	void setjobType(char type);
+	void setjobType(string type);
 	string getjobType();
 
 	void settimeGeneration(double timegeneration);
@@ -48,6 +49,6 @@ public:
 	void setwaitingTime(double waitingtime);
 	double getwaitingTime();
 
-	void setuseGPU(bool usegpu);
-	bool getuseGPU();
+	void setuseGPU(string usegpu);
+	string getuseGPU();
 };

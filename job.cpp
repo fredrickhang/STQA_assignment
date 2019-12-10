@@ -3,12 +3,13 @@
 #include<string>
 #include "job.h"
 
+
 void Job::setjobID(int jobid) {
 	this->jobID = jobid;
 }
 
 int Job::getjobID() {
-	return jobID;
+	return this->jobID;
 }
 
 void Job::setjobProcesser(int jobprocesser)
@@ -18,7 +19,7 @@ void Job::setjobProcesser(int jobprocesser)
 
 int Job::getjobProcesser()
 {
-	return jobProcesser;
+	return this->jobProcesser;
 }
 
 void Job::setuserType(string usertype)
@@ -29,15 +30,17 @@ void Job::setuserType(string usertype)
 
 string Job::getuserType()
 {
-	return userType;
+	return this->userType;
 }
 
-void Job::setjobType(char type) {
+void Job::setjobType(string type) {
 	this->jobType = type;
 }
 
+
+
 string Job::getjobType() {
-	return jobType;
+	return this->jobType;
 }
 
 
@@ -46,14 +49,14 @@ void Job::settimeCurrent(double timecurrent) {
 }
 
 double Job::gettimeCurrent() {
-	return timeCurrent;
+	return this->timeCurrent;
 }
 
 void Job::settimeFinish(double timefinish) {
 	this->timeFinish = timefinish;
 }
 double Job::gettimeFinish() {
-	return timeFinish;
+	return this->timeFinish;
 }
 
 void Job::settimeGeneration(double timegeneration) {
@@ -61,7 +64,7 @@ void Job::settimeGeneration(double timegeneration) {
 }
 
 double Job::gettimeGeneration() {
-	return timeGeneration;
+	return this->timeGeneration;
 }
 
 void Job::settimeStart(double timestart) {
@@ -69,14 +72,14 @@ void Job::settimeStart(double timestart) {
 }
 
 double Job::gettimeStart() {
-	return timeStart;
+	return this->timeStart;
 }
 
 void Job::setjobTime(double jobtime) {
 	this->jobTime = jobtime;
 }
 double Job::getjobTime() {
-	return jobTime;
+	return this->jobTime;
 }
 
 void Job::setwaitingTime(double waitingtime)
@@ -86,15 +89,16 @@ void Job::setwaitingTime(double waitingtime)
 
 double Job::getwaitingTime()
 {
-	return waitingTime;
+	return this->waitingTime;
 }
 
-void Job::setuseGPU(bool usegpu)
+
+void Job::setuseGPU(string usegpu)
 {
 	this->useGPU = usegpu;
 }
 
-bool Job::getuseGPU()
+string Job::getuseGPU()
 {
-	return useGPU;
+	return this->useGPU;
 }
