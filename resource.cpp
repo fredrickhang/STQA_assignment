@@ -4,6 +4,11 @@ void Resource::setUserType(char userType){
 	this->userType = userType;
 }
 
+void Resource::setUserType(string userType)
+{
+	this->userType = userType;
+}
+
 char Resource::getUserType()
 {
 	return this->userType;
@@ -19,12 +24,17 @@ double Resource::getGroupResource()
 	return this->groupResource;
 }
 
-void Resource::setGroupType(char groupType)
+void Resource::setGroupType(string groupType)
 {
 	this->groupType = groupType;
 }
 
-char Resource::getGroupType()
+void Resource::setGroupType(string groupType)
+{
+	this->groupType = groupType;
+}
+
+string Resource::getGroupType()
 {
 	return this->groupType;
 }

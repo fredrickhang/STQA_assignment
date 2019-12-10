@@ -1,15 +1,19 @@
+#include<string>
+using namespace std;
+
 class Resource {
 private:
-	char userType;
+	string userType;
 	double groupResource;
-	char groupType;
+	string groupType;
+	
 public:
-	void setUserType(char userType);
-	char getUserType();
+	void setUserType(string userType);
+	string getUserType();
 	void setGroupResource(double groupResource);
 	double getGroupResource();
-	void setGroupType(char groupType);
-	char getGroupType();
+	void setGroupType(string groupType);
+	string getGroupType();
 
 
 };
