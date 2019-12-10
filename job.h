@@ -6,7 +6,7 @@ class Job {
 private:
 	int jobID;
 	string userType;
-	char jobType;
+	string jobType;
 	int jobProcesser;
 	double jobTime;
 	double timeGeneration;
@@ -28,7 +28,7 @@ public:
 	string getuserType();
 
 	void setjobType(char type);
-	char getjobType();
+	string getjobType();
 
 	void settimeGeneration(double timegeneration);
 	double gettimeGeneration();

@@ -31,7 +31,7 @@ void Job::setuserType(string usertype)
 	this->userType = usertype;
 }
 
-int Job::getuserType()
+string Job::getuserType()
 {
 	return userType;
 }
@@ -40,7 +40,7 @@ void Job::setjobType(char type) {
 	this->jobType = type;
 }
 
-char Job::getjobType() {
+string Job::getjobType() {
 	return jobType;
 }
 
