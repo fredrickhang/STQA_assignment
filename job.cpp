@@ -4,6 +4,16 @@
 #include "job.h"
 
 
+void Job::setResource(double resource)
+{
+	this->Resource = resource;
+}
+
+double Job::getResource()
+{
+	return Resource;
+}
+
 void Job::setjobID(int jobid) {
 	this->jobID = jobid;
 }
