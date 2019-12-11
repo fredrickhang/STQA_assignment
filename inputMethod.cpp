@@ -4,10 +4,15 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include<math.h>
+#include<queue>
 #include"stringSplitTools.h"
+#include"exponentialDistribution.h"
 using namespace std;
 
-/*queue<Job>*/ void inputMethod() {
+void inputMethod(queue<Job> jobList1) {
+	double randomWaitTimeList[500];
+	queue<Job> jlist;
 	ifstream inFile("datainput.csv", ios::in);
 	if (!inFile) {
 		cout << "can not find file, please create a file named inputdata.csv";
@@ -32,6 +37,7 @@ using namespace std;
 	}
 
 	Job inputjob;
+	exponentialDistribution(randomWaitTimeList);
 	for (int k = 0; k < res1.size()-1;k++) {
 		string re = res1[k+1];
 		vector<string> job;
@@ -40,23 +46,24 @@ using namespace std;
 		inputjob.setjobType(job[1]);
 		inputjob.setjobProcesser(atoi(job[2].c_str()));
 		inputjob.setuseGPU(job[3]);
+		inputjob.settimeCurrent(ceil(randomWaitTimeList[0]));
+		inputjob.setjobID(k+1);
+		jlist.push(inputjob);
+	}
+	bool button = true;
+	while (button) {
+		jobList1.push(jlist.front());
+		jlist.pop();
+		if (jlist.empty()) {
 		
-
-
-
-
-		/*for (int j = 0;j<job.size();j++) {
-			cout << job[j] << endl;
-		
-		}*/
+			button = false;
+		}
 	}
 	
-	
-
 
 	
 
 
-	 
+	
 
 }
