@@ -69,11 +69,11 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			GPUnum++;
 		}
 	}
-	Job* working = new Job[num];
+	
 	Job* Swork = new Job[Snum];//small job queue
 	Job* Mwork = new Job[Mnum];//medium job queue
 	Job* Lwork = new Job[Lnum];//large job queue
-	Job* GPUworkF = new Job[GPUnum];//job that need GPU
+	Job* GPUwork = new Job[GPUnum];//job that need GPU
 	
 	Snum = 0;
 	Mnum = 0;
