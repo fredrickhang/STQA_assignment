@@ -668,6 +668,10 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	aveWaiting = waitingTime / finishNum;
 	machine.setAverageWaitTime(aveWaiting);
 
+	for (int i = 0; i < finishNum; i++) {
+		cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
+	}
+
 	return machine;
 	//
 }
