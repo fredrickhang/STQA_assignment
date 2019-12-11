@@ -10,7 +10,7 @@
 #include"exponentialDistribution.h"
 using namespace std;
 
-void inputMethod(queue<Job> jobList) {
+void inputMethod(queue<Job> jobList1) {
 	double randomWaitTimeList[500];
 	queue<Job> jlist;
 	ifstream inFile("datainput.csv", ios::in);
@@ -50,11 +50,14 @@ void inputMethod(queue<Job> jobList) {
 		inputjob.setjobID(k+1);
 		jlist.push(inputjob);
 	}
-	
-	while (!jlist.empty) {
-		jobList.push(jlist.front());
+	bool button = true;
+	while (button) {
+		jobList1.push(jlist.front());
 		jlist.pop();
-
+		if (jlist.empty()) {
+		
+			button = false;
+		}
 	}
 	
 
