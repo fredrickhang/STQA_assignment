@@ -12,7 +12,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	cout << joblist.size();
 	
 	int num;
-	int workingjob;
+	int workingjob=0;
+	int GPUworking=0;
 	int jobnum=0;
 	int smallProcesser;
 	int mediumProcesser;
@@ -20,14 +21,12 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	int GPUProcesser;
 	int finishNum=0;
 	int timecost=0;
+	int passNum = 0;
 
 	num = joblist.size();
 	Job *works=new Job[num];
 	Job *working = new Job[num];
-	Job *SworkF = new Job[num];//small job queue
-	Job *MworkF = new Job[num];//medium job queue
-	Job *LworkF = new Job[num];//large job queue
-	Job* GPUworkF = new Job[num];//job that need GPU
+	Job* gpuworking = new Job[num];
 	Job *Finish = new Job[num];//finish job queue
 
 	//calculate waiting time of each jobs
@@ -100,6 +99,9 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			GPUnum++;
 		}
 	}
+
+	delete[]works;
+
 	//calculate processer
 	smallProcesser = machine.getcurrentProcesser() /10;
 	mediumProcesser = machine.getcurrentProcesser() * 4/10;
@@ -115,17 +117,17 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	int Lorder = 0;
 	int GPUorder = 0;
 
-	while (Sorder+Morder+Lorder+GPUorder<num) {
+	while (passNum<num-1) {
 		//input GPU job to machine
-		while (1.5*(GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0) {
+		while (1.5*(GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0&& GPUorder < GPUnum) {
 			if (GPUwork[GPUorder].getuserType() == "IT") {
 
 				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking-1] = GPUwork[GPUorder];
 
 
 					IT.setGroupResource(IT.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -134,6 +136,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "IT group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Lr")
@@ -142,16 +145,18 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Lr.setGroupResource(Lr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
+					
 				}
 				else {
 					cout << "LR group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Mr")
@@ -160,8 +165,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Mr.setGroupResource(Mr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -170,6 +175,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "MR group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Sr")
@@ -178,8 +184,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Sr.setGroupResource(Sr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -188,6 +194,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "SR group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ls")
@@ -196,8 +203,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Ls.setGroupResource(Ls.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -206,6 +213,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "LS group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ms")
@@ -214,8 +222,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Ms.setGroupResource(Ms.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -224,6 +232,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "MS group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ss")
@@ -232,8 +241,8 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
-					workingjob = workingjob + 1;
-					working[workingjob - 1] = GPUwork[GPUorder];
+					GPUworking = GPUworking + 1;
+					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
 					Ss.setGroupResource(Ss.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
@@ -242,13 +251,14 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 				else {
 					cout << "SS group have no resource" << endl;
 					GPUorder = GPUorder + 1;
+					passNum++;
 				}
 			}
 		}
 
 	
 		//input short job to mechine
-			while (Swork[Sorder].getjobProcesser() < smallProcesser&&Swork[Sorder].getwaitingTime()<=0) {
+			while (Swork[Sorder].getjobProcesser() < smallProcesser&&Swork[Sorder].getwaitingTime()<=0&&Sorder<Snum) {
 				if (Swork[Sorder].getuserType()=="IT") {
 
 					if (IT.getGroupResource() >= Swork[Sorder].getResource()) 
@@ -265,6 +275,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout <<"IT group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Lr") 
@@ -282,6 +293,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Lr group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Mr")
@@ -299,6 +311,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Mr group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Sr")
@@ -317,6 +330,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Sr group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Ls")
@@ -334,6 +348,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ls group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Ms")
@@ -351,6 +366,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ms group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 				else if (Swork[Sorder].getuserType() == "Ss")
@@ -368,6 +384,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ss group have no resource" << endl;
 						Sorder = Sorder + 1;
+						passNum++;
 					}
 				}
 			}
@@ -375,7 +392,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 
 
 		//input merdium jobs to mechine
-			while (Mwork[Morder].getjobProcesser() < mediumProcesser && Mwork[Morder].getwaitingTime() <= 0) {
+			while (Mwork[Morder].getjobProcesser() < mediumProcesser && Mwork[Morder].getwaitingTime() <= 0&&Morder<Mnum) {
 				if (Mwork[Morder].getuserType() == "IT") {
 					if (IT.getGroupResource() >= Mwork[Morder].getResource()) {
 						mediumProcesser = mediumProcesser - Mwork[Morder].getjobProcesser();
@@ -390,6 +407,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "IT group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				}
 				else if (Mwork[Morder].getuserType() == "Lr") 
@@ -407,6 +425,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Lr group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				}
 				else if (Mwork[Morder].getuserType() == "Mr") 
@@ -424,6 +443,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Mr group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				
 				}
@@ -442,6 +462,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Sr group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				}
 				else if (Mwork[Morder].getuserType() == "Ls") 
@@ -459,6 +480,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ls group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				}
 				else if (Mwork[Morder].getuserType() == "Ms") 
@@ -476,6 +498,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ms group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				
 				}
@@ -493,6 +516,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ss group have no resource" << endl;
 						Morder = Morder + 1;
+						passNum++;
 					}
 				}
 				
@@ -500,7 +524,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 		
 		//input large jobs to mechine
-			while (Lwork[Lorder].getjobProcesser() < largeProcesser&&Lwork[Lorder].getwaitingTime()<=0) {
+			while (Lwork[Lorder].getjobProcesser() < largeProcesser&&Lwork[Lorder].getwaitingTime()<=0&&Lorder<Lnum) {
 				if (Lwork[Lorder].getuserType() == "IT") {
 					if (IT.getGroupResource() >= Lwork[Lorder].getResource()) {
 						largeProcesser = largeProcesser - Lwork[Lorder].getjobProcesser();
@@ -514,6 +538,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "IT group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				else if (Lwork[Lorder].getuserType() == "Lr") {
@@ -528,6 +553,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Lr group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				else if (Lwork[Lorder].getuserType() == "Mr") {
@@ -542,6 +568,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Mr group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				else if (Lwork[Lorder].getuserType() == "Sr")
@@ -557,6 +584,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Sr group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				else if (Lwork[Lorder].getuserType() == "Ls")
@@ -572,6 +600,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ls group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				else if (Lwork[Lorder].getuserType() == "Ms")
@@ -587,6 +616,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ms group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				
 				}
@@ -602,6 +632,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					else {
 						cout << "Ss group have no resource" << endl;
 						Lorder = Lorder + 1;
+						passNum++;
 					}
 				}
 				
@@ -625,6 +656,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 						working[i].settimeFinish( timecost);
 						Finish[finishNum] = working[i];
 						finishNum = finishNum + 1;
+						passNum++;
 					
 				}
 				else if (working[i].getjobType() == "medium") {
@@ -634,6 +666,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 						working[i].settimeFinish(timecost);
 						Finish[finishNum] = working[i];
 						finishNum = finishNum + 1;
+						passNum++;
 				}
 				else if (working[i].getjobType() == "large") {
 					
@@ -642,11 +675,34 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 						working[i].settimeFinish(timecost);
 						Finish[finishNum] = working[i];
 						finishNum = finishNum + 1;
+						passNum++;
 					
 				}
 			}
 
 		}
+
+		for (int i = 0; i < GPUworking; i++) {
+			if (gpuworking[i].gettimeCurrent() > 0) {
+				gpuworking[i].settimeCurrent(working[i].gettimeCurrent() - 1.0);
+
+			}
+			else if (working[i].gettimeCurrent() == 0)
+			{
+				
+
+					GPUProcesser = GPUProcesser + working[i].getjobProcesser();
+					gpuworking[i].settimeCurrent(-1);
+					gpuworking[i].settimeFinish(timecost);
+					Finish[finishNum] = gpuworking[i];
+					finishNum = finishNum + 1;
+					passNum++;
+
+				
+			}
+
+		}
+
 		//judge time waiting
 		for (int i = 0; i < Snum; i++) {
 			double time;
@@ -674,7 +730,14 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			time = Lwork[i].getwaitingTime() - 1;
 			Lwork[i].setwaitingTime(time);
 		}
-
+		for (int i = 0; i < GPUnum; i++) {
+			double time;
+			if (GPUwork[i].getwaitingTime() == 0) {
+				GPUwork[i].settimeGeneration(timecost);
+			}
+			time = GPUwork[i].getwaitingTime() - 1;
+			GPUwork[i].setwaitingTime(time);
+		}
 		
 
 		timecost = timecost + 1;
