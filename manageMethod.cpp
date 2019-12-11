@@ -14,6 +14,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	int smallProcesser;
 	int mediumProcesser;
 	int largeProcesser;
+	int GPUProcesser;
 	int finishNum=0;
 	int timecost=0;
 
@@ -23,6 +24,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	Job *Swork = new Job[num];//small job queue
 	Job *Mwork = new Job[num];//medium job queue
 	Job *Lwork = new Job[num];//large job queue
+	Job* GPUwork = new Job[num];//job that need GPU
 	Job *Finish = new Job[num];//finish job queue
 
 	//calculate waiting time of each jobs
@@ -42,27 +44,34 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	int Snum = 0;
 	int Mnum = 0;
 	int Lnum = 0;
+	int GPUnum = 0;
 	for (int i = 0; i < num; i++) {
 		//all short jobs
-		if (works[i].getjobType() == "short") {
+		if (works[i].getjobType() == "short"&&works[i].getuseGPU()=="n") {
 			Swork[Snum] = works[i];
 			Snum++;
 		}
 		//all medium jobs
-		else if (works[i].getjobType() == "medium") {
+		else if (works[i].getjobType() == "medium" && works[i].getuseGPU() == "n") {
 			Mwork[Mnum] = works[i];
 			Mnum++;
 		}
 		//all large jobs
-		else if (works[i].getjobType() == "large") {
+		else if (works[i].getjobType() == "large" && works[i].getuseGPU() == "n") {
 			Lwork[Lnum] = works[i];
 			Lnum++;
+		}
+		else if (works[i].getuseGPU() == "y") {
+			GPUwork[GPUnum] = works[i];
+			GPUnum++;
 		}
 	}
 	//calculate processer
 	smallProcesser = machine.getcurrentProcesser() /10;
 	mediumProcesser = machine.getcurrentProcesser() * 4/10;
 	largeProcesser = machine.getcurrentProcesser() * 5/10;
+	GPUProcesser = 8 * 2 * 16;
+
 	
 
 
@@ -70,7 +79,139 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	int Sorder = 0;
 	int Morder = 0;
 	int Lorder = 0;
-	while (Sorder+Morder+Lorder+3<num) {
+	int GPUorder = 0;
+
+	while (Sorder+Morder+Lorder+GPUorder+3<num) {
+		//input GPU job to machine
+		while (GPUwork[GPUorder].getjobProcesser() < GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0) {
+			if (GPUwork[GPUorder].getuserType() == "IT") {
+
+				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					IT.setGroupResource(IT.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "IT group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "LR")
+			{
+				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Lr.setGroupResource(Lr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "LR group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "MR")
+			{
+				if (Mr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Mr.setGroupResource(Mr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "MR group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "SR")
+			{
+				if (Sr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Sr.setGroupResource(Sr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "SR group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "LS")
+			{
+				if (Ls.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Ls.setGroupResource(Ls.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "LS group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "MS")
+			{
+				if (Ms.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Ms.setGroupResource(Ms.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "MS group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+			else if (GPUwork[GPUorder].getuserType() == "Ss")
+			{
+				if (Ss.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				{
+					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
+					GPUwork[GPUorder].settimeStart(timecost);
+					workingjob = workingjob + 1;
+					working[workingjob - 1] = GPUwork[GPUorder];
+
+
+					Ss.setGroupResource(Ss.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					GPUorder = GPUorder + 1;
+				}
+				else {
+					cout << "SS group have no resource" << endl;
+					GPUorder = GPUorder + 1;
+				}
+			}
+		}
+
 	
 		//input short job to mechine
 			while (Swork[Sorder].getjobProcesser() < smallProcesser&&Swork[Sorder].getwaitingTime()<=0) {

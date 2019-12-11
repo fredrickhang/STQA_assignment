@@ -1,15 +1,12 @@
 #include"resource.h"
 
-void Resource::setUserType(char userType){
-	this->userType = userType;
-}
 
 void Resource::setUserType(string userType)
 {
 	this->userType = userType;
 }
 
-char Resource::getUserType()
+string Resource::getUserType()
 {
 	return this->userType;
 }
@@ -29,10 +26,6 @@ void Resource::setGroupType(string groupType)
 	this->groupType = groupType;
 }
 
-void Resource::setGroupType(string groupType)
-{
-	this->groupType = groupType;
-}
 
 string Resource::getGroupType()
 {
