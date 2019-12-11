@@ -1,4 +1,4 @@
-userType,jobType,jobProcesser,useGPU
-student,short,16,no
-it,mid,16,yes
-researcher,large,16,yes
+userType,jobType,jobProcesser,useGPU,userResource
+student,short,16,yes,3
+it,mid,16,yes,254
+researcher,large,16,yes,2

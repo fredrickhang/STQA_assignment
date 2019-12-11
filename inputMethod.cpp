@@ -48,6 +48,7 @@ void inputMethod(queue<Job> jobList1) {
 		inputjob.setuseGPU(job[3]);
 		inputjob.settimeCurrent(ceil(randomWaitTimeList[0]));
 		inputjob.setjobID(k+1);
+		inputjob.setResource(atoi(job[3].c_str()));
 		jlist.push(inputjob);
 	}
 	bool button = true;
