@@ -10,7 +10,7 @@ void exponentialDistribution(double randomWaitTimeList[500]) {
 
 	for (int k = 0; k < 500; k++) {
 		randomWaitTimeList[k] = rng(rnd_gen);
-		std::cout << rng(rnd_gen) * 60 << "\n";
+		//std::cout << rng(rnd_gen) * 60 << "\n";
 	}
 
 	

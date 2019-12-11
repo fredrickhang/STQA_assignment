@@ -1,4 +1,4 @@
 userType,jobType,jobProcesser,useGPU,userResource
-student,short,16,yes,3
-it,mid,16,yes,254
-researcher,large,16,yes,2
+Mr,short,16,y,3
+IT,medium,16,y,254
+Lr,large,16,n,2

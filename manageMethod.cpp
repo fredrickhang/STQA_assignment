@@ -4,10 +4,13 @@
 #include"center.h"
 #include<queue>
 #include"job.h"
+#include"manageMethod.h"
 #include"resource.h"
 using namespace std;
 
-Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Resource Mr,Resource Sr,Resource Ls,Resource Ms,Resource Ss) {
+void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Resource Mr,Resource Sr,Resource Ls,Resource Ms,Resource Ss) {
+	cout << joblist.size();
+	
 	int num;
 	int workingjob;
 	int jobnum=0;
@@ -81,9 +84,9 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	int Lorder = 0;
 	int GPUorder = 0;
 
-	while (Sorder+Morder+Lorder+GPUorder+3<num) {
+	while (Sorder+Morder+Lorder+GPUorder<num) {
 		//input GPU job to machine
-		while (GPUwork[GPUorder].getjobProcesser() < GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0) {
+		while (1.5*(GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0) {
 			if (GPUwork[GPUorder].getuserType() == "IT") {
 
 				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
@@ -672,6 +675,6 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 		cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
 	}
 
-	return machine;
-	//
+	
+	
 }

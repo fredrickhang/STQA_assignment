@@ -10,6 +10,7 @@
 int main() {
 
 	queue<Job> joblist2;
+	vector<Resource> resourceist;
 	Resource IT;
 	Resource Lr;
 	Resource Mr;
@@ -18,10 +19,14 @@ int main() {
 	Resource Ms;
 	Resource Ss;
 	Center center;
-	inputMethod(joblist2);
-	initializeResources(IT,Lr,Mr,Sr,Ls,Ms,Ss);
-	center.setcurrentProcesser(120*16);
+
+	resourceist= initializeResources(IT, Lr, Mr, Sr, Ls, Ms, Ss);
+
 	
+	center.setcurrentProcesser(120 * 16);
+	joblist2=inputMethod(joblist2);
+
+	manageMethod(joblist2,center, resourceist[0], resourceist[1], resourceist[2], resourceist[3], resourceist[4], resourceist[5], resourceist[6]);
 
 	
 	

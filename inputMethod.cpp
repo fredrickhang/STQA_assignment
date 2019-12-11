@@ -10,7 +10,7 @@
 #include"exponentialDistribution.h"
 using namespace std;
 
-void inputMethod(queue<Job> jobList1) {
+queue<Job> inputMethod(queue<Job> jobList1) {
 	double randomWaitTimeList[500];
 	queue<Job> jlist;
 	ifstream inFile("datainput.csv", ios::in);
@@ -46,9 +46,21 @@ void inputMethod(queue<Job> jobList1) {
 		inputjob.setjobType(job[1]);
 		inputjob.setjobProcesser(atoi(job[2].c_str()));
 		inputjob.setuseGPU(job[3]);
-		inputjob.settimeCurrent(ceil(randomWaitTimeList[0]));
+		inputjob.setwaitingTime(ceil(randomWaitTimeList[0]));
+		if (job[1]=="short") {
+			inputjob.settimeCurrent(60);
+		
+		}
+		else if (job[1] == "medium") {
+			inputjob.settimeCurrent(480);
+		
+		}
+		else if (job[1]=="large") {
+			inputjob.settimeCurrent(960);
+		
+		}
 		inputjob.setjobID(k+1);
-		inputjob.setResource(atoi(job[3].c_str()));
+		inputjob.setResource(atoi(job[4].c_str()));
 		jlist.push(inputjob);
 	}
 	bool button = true;
@@ -64,6 +76,7 @@ void inputMethod(queue<Job> jobList1) {
 
 	
 
+	return jobList1;
 
 	
 

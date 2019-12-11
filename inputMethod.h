@@ -1,2 +1,2 @@
 #include<queue>
-void inputMethod(queue<Job> joblist);
+queue<Job> inputMethod(queue<Job> joblist);
