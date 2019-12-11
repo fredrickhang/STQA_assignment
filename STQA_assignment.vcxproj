@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="center.cpp" />
+    <ClCompile Include="exponentialDistribution.cpp" />
     <ClCompile Include="inputMethod.cpp" />
     <ClCompile Include="job.cpp" />
     <ClCompile Include="main.cpp" />
@@ -135,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="center.h" />
+    <ClInclude Include="exponentialDistribution.h" />
     <ClInclude Include="inputMethod.h" />
     <ClInclude Include="job.h" />
     <ClInclude Include="manageMethod.h" />
