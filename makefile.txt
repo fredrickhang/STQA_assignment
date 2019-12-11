@@ -1,0 +1,3 @@
+# %.dep : %.cpp
+#   g++ -M $(FLAGS) $< > $@
+# include $(OBJS:.o=.dep)
