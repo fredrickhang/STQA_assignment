@@ -24,10 +24,10 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	num = joblist.size();
 	Job *works=new Job[num];
 	Job *working = new Job[num];
-	Job *Swork = new Job[num];//small job queue
-	Job *Mwork = new Job[num];//medium job queue
-	Job *Lwork = new Job[num];//large job queue
-	Job* GPUwork = new Job[num];//job that need GPU
+	Job *SworkF = new Job[num];//small job queue
+	Job *MworkF = new Job[num];//medium job queue
+	Job *LworkF = new Job[num];//large job queue
+	Job* GPUworkF = new Job[num];//job that need GPU
 	Job *Finish = new Job[num];//finish job queue
 
 	//calculate waiting time of each jobs
@@ -48,6 +48,37 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	int Mnum = 0;
 	int Lnum = 0;
 	int GPUnum = 0;
+	for (int i = 0; i < num; i++) {
+		//all short jobs
+		if (works[i].getjobType() == "short" && works[i].getuseGPU() == "n") {
+			
+			Snum++;
+		}
+		//all medium jobs
+		else if (works[i].getjobType() == "medium" && works[i].getuseGPU() == "n") {
+			
+			Mnum++;
+		}
+		//all large jobs
+		else if (works[i].getjobType() == "large" && works[i].getuseGPU() == "n") {
+			
+			Lnum++;
+		}
+		else if (works[i].getuseGPU() == "y") {
+			
+			GPUnum++;
+		}
+	}
+	Job* working = new Job[num];
+	Job* Swork = new Job[Snum];//small job queue
+	Job* Mwork = new Job[Mnum];//medium job queue
+	Job* Lwork = new Job[Lnum];//large job queue
+	Job* GPUworkF = new Job[GPUnum];//job that need GPU
+	
+	Snum = 0;
+	Mnum = 0;
+	Lnum = 0;
+	GPUnum = 0;
 	for (int i = 0; i < num; i++) {
 		//all short jobs
 		if (works[i].getjobType() == "short"&&works[i].getuseGPU()=="n") {
