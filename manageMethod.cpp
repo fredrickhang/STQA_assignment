@@ -102,7 +102,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 					GPUorder = GPUorder + 1;
 				}
 			}
-			else if (GPUwork[GPUorder].getuserType() == "LR")
+			else if (GPUwork[GPUorder].getuserType() == "Lr")
 			{
 				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
@@ -120,7 +120,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 					GPUorder = GPUorder + 1;
 				}
 			}
-			else if (GPUwork[GPUorder].getuserType() == "MR")
+			else if (GPUwork[GPUorder].getuserType() == "Mr")
 			{
 				if (Mr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
@@ -138,7 +138,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 					GPUorder = GPUorder + 1;
 				}
 			}
-			else if (GPUwork[GPUorder].getuserType() == "SR")
+			else if (GPUwork[GPUorder].getuserType() == "Sr")
 			{
 				if (Sr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
@@ -156,7 +156,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 					GPUorder = GPUorder + 1;
 				}
 			}
-			else if (GPUwork[GPUorder].getuserType() == "LS")
+			else if (GPUwork[GPUorder].getuserType() == "Ls")
 			{
 				if (Ls.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
@@ -174,7 +174,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 					GPUorder = GPUorder + 1;
 				}
 			}
-			else if (GPUwork[GPUorder].getuserType() == "MS")
+			else if (GPUwork[GPUorder].getuserType() == "Ms")
 			{
 				if (Ms.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
 				{
@@ -233,7 +233,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 						Sorder = Sorder + 1;
 					}
 				}
-				else if (Swork[Sorder].getuserType() == "LR") 
+				else if (Swork[Sorder].getuserType() == "Lr") 
 				{
 					if (Lr.getGroupResource() >= Swork[Sorder].getResource()) {
 						smallProcesser = smallProcesser - Swork[Sorder].getjobProcesser();
@@ -250,7 +250,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 						Sorder = Sorder + 1;
 					}
 				}
-				else if (Swork[Sorder].getuserType() == "MR")
+				else if (Swork[Sorder].getuserType() == "Mr")
 				{
 					if (Mr.getGroupResource() >= Swork[Sorder].getResource()) {
 						smallProcesser = smallProcesser - Swork[Sorder].getjobProcesser();
@@ -267,7 +267,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 						Sorder = Sorder + 1;
 					}
 				}
-				else if (Swork[Sorder].getuserType() == "SR")
+				else if (Swork[Sorder].getuserType() == "Sr")
 				{
 					if (Sr.getGroupResource() >= Swork[Sorder].getResource()) 
 					{
@@ -342,7 +342,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 
 		//input merdium jobs to mechine
 			while (Mwork[Morder].getjobProcesser() < mediumProcesser && Mwork[Morder].getwaitingTime() <= 0) {
-				if (Mwork[Morder].getuserType() == "It") {
+				if (Mwork[Morder].getuserType() == "IT") {
 					if (IT.getGroupResource() >= Mwork[Morder].getResource()) {
 						mediumProcesser = mediumProcesser - Mwork[Morder].getjobProcesser();
 						Mwork[Morder].settimeStart(timecost);
@@ -467,7 +467,7 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 		
 		//input large jobs to mechine
 			while (Lwork[Lorder].getjobProcesser() < largeProcesser&&Lwork[Lorder].getwaitingTime()<=0) {
-				if (Lwork[Lorder].getuserType() == "It") {
+				if (Lwork[Lorder].getuserType() == "IT") {
 					if (IT.getGroupResource() >= Lwork[Lorder].getResource()) {
 						largeProcesser = largeProcesser - Lwork[Lorder].getjobProcesser();
 						Lwork[Lorder].settimeStart(timecost);
@@ -667,6 +667,10 @@ Center manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Re
 	}
 	aveWaiting = waitingTime / finishNum;
 	machine.setAverageWaitTime(aveWaiting);
+
+	for (int i = 0; i < finishNum; i++) {
+		cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
+	}
 
 	return machine;
 	//
