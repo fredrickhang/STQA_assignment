@@ -9,7 +9,7 @@
 using namespace std;
 
 void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Resource Mr,Resource Sr,Resource Ls,Resource Ms,Resource Ss) {
-	cout << joblist.size();
+	//cout << joblist.size();
 	
 	int num;
 	int workingjob=0;
@@ -117,7 +117,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	int Lorder = 0;
 	int GPUorder = 0;
 
-	while (passNum<num-1) {
+	while (passNum<num) {
 		//input GPU job to machine
 		while (1.5*(GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0&& GPUorder < GPUnum) {
 			if (GPUwork[GPUorder].getuserType() == "IT") {
@@ -739,8 +739,13 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			GPUwork[i].setwaitingTime(time);
 		}
 		
-
-		timecost = timecost + 1;
+		if (timecost < 6240) {
+			timecost = timecost + 1;
+		}
+		else {
+			break;
+		}
+		
 
 	}
 
