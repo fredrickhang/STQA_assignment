@@ -1,6 +1,5 @@
 #include"job.h"
 #include"inputMethod.h"
-#include "exponentialDistribution.h"
 #include <iostream>
 #include<queue>
 #include"resource.h"

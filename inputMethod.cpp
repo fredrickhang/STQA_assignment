@@ -36,8 +36,8 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 	}
 
 	Job inputjob;
-	int num = 0;
-	double waitTime = 1;
+	double num = 1;
+	double waitTime;
 	for (int k = 0; k < res1.size()-1;k++) {
 		string re = res1[k+1];
 		vector<string> job;
@@ -48,29 +48,33 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		inputjob.setuseGPU(job[3]);
 		
 		if (job[1]=="short") {
-			num++;
+			num=num+1;
 			waitTime = 60*(1/(num));
+			std::cout << waitTime << endl;
 			inputjob.setwaitingTime(ceil(waitTime));
 			inputjob.settimeCurrent(60);
 		
 		}
 		else if (job[1] == "medium") {
-			num++;
+			num = num + 1;
 			waitTime = 60 * (1 / (num));
+			std::cout << waitTime << endl;
 			inputjob.settimeCurrent(480);
 			inputjob.setwaitingTime(ceil(waitTime));
 		}
 		else if (job[1]=="large") {
 			
-			num++;
+			num = num + 1;
 			waitTime = 60 * (1 / (num));
+			std::cout << waitTime << endl;
 			inputjob.settimeCurrent(960);
 			inputjob.setwaitingTime(ceil(waitTime));
 		}
 		else if (job[1]=="huge") {
 			
-			num++;
+			num = num + 1;
 			waitTime = 60 * (1 / (num));
+			std::cout << waitTime << endl;
 			inputjob.setwaitingTime(ceil(waitTime));
 		
 		}
