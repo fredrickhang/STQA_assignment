@@ -7,6 +7,7 @@
 #include<math.h>
 #include<queue>
 #include"stringSplitTools.h"
+#include<cstdlib>
 using namespace std;
 
 queue<Job> inputMethod(queue<Job> jobList1) {
