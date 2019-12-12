@@ -34,7 +34,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 		works[i] = joblist.front();
 		joblist.pop();
 	}
-	for (int i = num; i >0; i--) {
+	for (int i = num; i >=0; i--) {
 		double time = 0;
 		for (int j = 0; j < i; j++) {
 			time = works[j].getwaitingTime()+time;
@@ -119,10 +119,10 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 
 	while (passNum<num) {
 		//input GPU job to machine
-		while (1.5*(GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0&& GPUorder < GPUnum) {
+		while ((GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0&& GPUorder < GPUnum) {
 			if (GPUwork[GPUorder].getuserType() == "IT") {
 
-				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (IT.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -130,7 +130,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking-1] = GPUwork[GPUorder];
 
 
-					IT.setGroupResource(IT.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					IT.setGroupResource(IT.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
@@ -141,7 +141,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Lr")
 			{
-				if (IT.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (IT.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -149,7 +149,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Lr.setGroupResource(Lr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Lr.setGroupResource(Lr.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 					
 				}
@@ -161,7 +161,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Mr")
 			{
-				if (Mr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (Mr.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -169,7 +169,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Mr.setGroupResource(Mr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Mr.setGroupResource(Mr.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
@@ -180,7 +180,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Sr")
 			{
-				if (Sr.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (Sr.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -188,7 +188,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Sr.setGroupResource(Sr.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Sr.setGroupResource(Sr.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
@@ -199,7 +199,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ls")
 			{
-				if (Ls.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (Ls.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -207,7 +207,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Ls.setGroupResource(Ls.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Ls.setGroupResource(Ls.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
@@ -218,7 +218,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ms")
 			{
-				if (Ms.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (Ms.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -226,7 +226,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Ms.setGroupResource(Ms.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Ms.setGroupResource(Ms.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
@@ -237,7 +237,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			}
 			else if (GPUwork[GPUorder].getuserType() == "Ss")
 			{
-				if (Ss.getGroupResource() >= 1.5*GPUwork[GPUorder].getResource())
+				if (Ss.getGroupResource() >= GPUwork[GPUorder].getResource())
 				{
 					GPUProcesser = GPUProcesser - GPUwork[GPUorder].getjobProcesser();
 					GPUwork[GPUorder].settimeStart(timecost);
@@ -245,7 +245,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 					gpuworking[GPUworking - 1] = GPUwork[GPUorder];
 
 
-					Ss.setGroupResource(Ss.getGroupResource() - 1.5*GPUwork[GPUorder].getResource());
+					Ss.setGroupResource(Ss.getGroupResource() - GPUwork[GPUorder].getResource());
 					GPUorder = GPUorder + 1;
 				}
 				else {
