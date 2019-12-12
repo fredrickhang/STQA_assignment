@@ -124,8 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="center.cpp" />
-   
-    <ClCompile Include="hugeManageMethod.cpp" />
+
     <ClCompile Include="InitializeResources.cpp" />
     <ClCompile Include="inputMethod.cpp" />
     <ClCompile Include="job.cpp" />
@@ -137,8 +136,7 @@
     <ClCompile Include="user_student.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="center.h" />
-   
+ 
     <ClInclude Include="hugeManageMethod.h" />
     <ClInclude Include="InitializeResources.h" />
     <ClInclude Include="inputMethod.h" />
