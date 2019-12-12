@@ -42,9 +42,6 @@
     <ClCompile Include="manageMethod.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exponentialDistribution.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="InitializeResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="stringSplitTools.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="exponentialDistribution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="InitializeResources.h">

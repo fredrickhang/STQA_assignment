@@ -7,7 +7,6 @@
 #include<math.h>
 #include<queue>
 #include"stringSplitTools.h"
-#include"exponentialDistribution.h"
 using namespace std;
 
 queue<Job> inputMethod(queue<Job> jobList1) {
@@ -37,7 +36,8 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 	}
 
 	Job inputjob;
-	exponentialDistribution(randomWaitTimeList);
+	int num = 0;
+	double waitTime = 1;
 	for (int k = 0; k < res1.size()-1;k++) {
 		string re = res1[k+1];
 		vector<string> job;
@@ -46,17 +46,32 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		inputjob.setjobType(job[1]);
 		inputjob.setjobProcesser(atoi(job[2].c_str()));
 		inputjob.setuseGPU(job[3]);
-		inputjob.setwaitingTime(ceil(randomWaitTimeList[0]));
+		
 		if (job[1]=="short") {
+			num++;
+			waitTime = 60*(1/(num));
+			inputjob.setwaitingTime(ceil(waitTime));
 			inputjob.settimeCurrent(60);
 		
 		}
 		else if (job[1] == "medium") {
+			num++;
+			waitTime = 60 * (1 / (num));
 			inputjob.settimeCurrent(480);
-		
+			inputjob.setwaitingTime(ceil(waitTime));
 		}
 		else if (job[1]=="large") {
+			
+			num++;
+			waitTime = 60 * (1 / (num));
 			inputjob.settimeCurrent(960);
+			inputjob.setwaitingTime(ceil(waitTime));
+		}
+		else if (job[1]=="huge") {
+			
+			num++;
+			waitTime = 60 * (1 / (num));
+			inputjob.setwaitingTime(ceil(waitTime));
 		
 		}
 		inputjob.setjobID(k+1);
