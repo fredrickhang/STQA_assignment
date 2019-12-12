@@ -124,7 +124,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="center.cpp" />
-
     <ClCompile Include="InitializeResources.cpp" />
     <ClCompile Include="inputMethod.cpp" />
     <ClCompile Include="job.cpp" />
@@ -132,11 +131,8 @@
     <ClCompile Include="manageMethod.cpp" />
     <ClCompile Include="resource.cpp" />
     <ClCompile Include="stringSplitTools.cpp" />
-    <ClCompile Include="user.cpp" />
-    <ClCompile Include="user_student.cpp" />
   </ItemGroup>
   <ItemGroup>
- 
     <ClInclude Include="hugeManageMethod.h" />
     <ClInclude Include="InitializeResources.h" />
     <ClInclude Include="inputMethod.h" />
@@ -144,8 +140,6 @@
     <ClInclude Include="manageMethod.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stringSplitTools.h" />
-    <ClInclude Include="user.h" />
-    <ClInclude Include="user_student.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
