@@ -41,6 +41,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			
 		}
 		works[i].setwaitingTime(time);
+		works[i].settimeGeneration(time);
 	}
 	//group job
 	int Snum = 0;
@@ -117,7 +118,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	int Lorder = 0;
 	int GPUorder = 0;
 
-	while (passNum<num) {
+	while (passNum<num-1) {
 		//input GPU job to machine
 		while ((GPUwork[GPUorder].getjobProcesser() )< GPUProcesser && GPUwork[GPUorder].getwaitingTime() <= 0&& GPUorder < GPUnum) {
 			if (GPUwork[GPUorder].getuserType() == "IT") {
@@ -770,10 +771,28 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	aveWaiting = waitingTime / finishNum;
 	machine.setAverageWaitTime(aveWaiting);
 
+	//calculate average turnaround time;
+	double  aveAround = 0;
+	double turnaround = 0;
+	for (int i = 0; i < finishNum; i++) {
+		turnaround =turnaround + (Finish[i].gettimeFinish() - Finish[i].gettimeGeneration());
+	}
+	aveAround = turnaround / jobtime;
+
+
+
+	//output
+	cout << "the number of the jobs: " << finishNum +1<< endl;
+
 	for (int i = 0; i < finishNum; i++) {
 		cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
+		//cout << Finish[i].gettimeGeneration() << endl;
 	}
-
 	
+	cout << "average waiting time :" << aveWaiting << endl;
+	cout << "average job time: " << avejobtime << endl;
+	cout << "average turnaround time: " << aveAround << endl;
+
+	cout << "timecost : " << timecost << endl;
 	
 }
