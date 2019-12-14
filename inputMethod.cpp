@@ -35,7 +35,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		//cout << res1[i]<< endl;
 		i++;
 	}
-
+	
 	Job inputjob;
 	double num = 1;
 	double waitTime;
