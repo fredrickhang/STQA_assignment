@@ -11,6 +11,7 @@
 #include "testStringSplit.h"
 #include<ctime>
 #include "testBadDatafile.h"
+#include"testmanageMethod.h"
 int main() {
 
 	queue<Job> joblist2;
@@ -30,7 +31,7 @@ int main() {
 	center.setcurrentProcesser(120 * 16);
 	joblist2=inputMethod(joblist2);
 
-	manageMethod(joblist2,center, resourceist[0], resourceist[1], resourceist[2], resourceist[3], resourceist[4], resourceist[5], resourceist[6]);
+	//manageMethod(joblist2,center, resourceist[0], resourceist[1], resourceist[2], resourceist[3], resourceist[4], resourceist[5], resourceist[6]);
 
 	///*test part*/
 	////test readfile function
@@ -47,7 +48,7 @@ int main() {
 	//}
 	////Combining inputMethod interface test and bad data test
 	//testBadDatafile();
-	
+	testmanageMethods();
 
 	return 0;
 }

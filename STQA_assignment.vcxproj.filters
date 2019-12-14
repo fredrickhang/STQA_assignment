@@ -54,6 +54,9 @@
     <ClCompile Include="testBadDatafile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testmanageMethod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="job.h">
@@ -74,9 +77,6 @@
     <ClInclude Include="hugeManageMethod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EasyLog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="testReadfile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -93,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testWaitingTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testmanageMethod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

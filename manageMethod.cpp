@@ -784,7 +784,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 
 	//output
 	ofstream oFile;
-	oFile.open("ouput.csv");
+	oFile.open("output.csv");
 
 
 	//cout << "the number of the jobs: " << finishNum << endl;
@@ -826,7 +826,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 	oFile << "the number of finished GPU job:" << "," << GPUnum << endl;
 
 
-	for (int i = 0; i < finishNum; i++) {
+	for (int i = 0; i < finishNum+1; i++) {
 		//cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
 		//cout << Finish[i].gettimeGeneration() << endl;
 	}
