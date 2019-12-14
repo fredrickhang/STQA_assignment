@@ -39,6 +39,12 @@
     <ClCompile Include="InitializeResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testJobDivide.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testWaitingTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="testReadfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,6 +87,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="testBadDatafile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testJobDivide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testWaitingTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
