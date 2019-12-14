@@ -133,12 +133,12 @@
     <ClCompile Include="testBadDatafile.cpp" />
     <ClCompile Include="stringSplitTools.cpp" />
     <ClCompile Include="testJobDivide.cpp" />
+    <ClCompile Include="testmanageMethod.cpp" />
     <ClCompile Include="testWaitingTime.cpp" />
     <ClCompile Include="testReadfile.cpp" />
     <ClCompile Include="testStringSplit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EasyLog.h" />
     <ClInclude Include="testBadDatafile.h" />
     <ClInclude Include="hugeManageMethod.h" />
     <ClInclude Include="InitializeResources.h" />
@@ -148,6 +148,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="stringSplitTools.h" />
     <ClInclude Include="testJobDivide.h" />
+    <ClInclude Include="testmanageMethod.h" />
     <ClInclude Include="testWaitingTime.h" />
     <ClInclude Include="testReadfile.h" />
     <ClInclude Include="testStringSplit.h" />
