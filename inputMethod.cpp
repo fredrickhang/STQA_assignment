@@ -29,7 +29,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 
 			res1.push_back(field);
 		}
-		if (i>50) {
+		if (i>5000) {
 			break;
 		}
 		//cout << res1[i]<< endl;
@@ -55,7 +55,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		if (job[1]=="short") {
 			num=num+1;
 			waitTime = 60*(1/(num));
-			std::cout << waitTime << endl;
+			//std::cout << waitTime << endl;
 			inputjob.setwaitingTime(ceil(waitTime));
 			inputjob.settimeCurrent(60);
 		
@@ -63,7 +63,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		else if (job[1] == "medium") {
 			num = num + 1;
 			waitTime = 60 * (1 / (num));
-			std::cout << waitTime << endl;
+			//std::cout << waitTime << endl;
 			inputjob.settimeCurrent(480);
 			inputjob.setwaitingTime(ceil(waitTime));
 		}
@@ -71,7 +71,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 			
 			num = num + 1;
 			waitTime = 60 * (1 / (num));
-			std::cout << waitTime << endl;
+			//std::cout << waitTime << endl;
 			inputjob.settimeCurrent(960);
 			inputjob.setwaitingTime(ceil(waitTime));
 		}
@@ -79,7 +79,7 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 			
 			num = num + 1;
 			waitTime = 60 * (1 / (num));
-			std::cout << waitTime << endl;
+			//std::cout << waitTime << endl;
 			inputjob.setwaitingTime(ceil(waitTime));
 		
 		}
