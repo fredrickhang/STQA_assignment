@@ -527,6 +527,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 		
 		//input large jobs to mechine
 			while (Lwork[Lorder].getjobProcesser() < largeProcesser&&Lwork[Lorder].getwaitingTime()<=0&&Lorder<Lnum) {
+				//Determine user type
 				if (Lwork[Lorder].getuserType() == "IT") {
 					if (IT.getGroupResource() >= Lwork[Lorder].getResource()) {
 						largeProcesser = largeProcesser - Lwork[Lorder].getjobProcesser();
@@ -643,7 +644,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 		
 
 
-
+			//Determines whether each task in the run queue has completed
 		for (int i = 0; i < workingjob; i++) {
 			if (working[i].gettimeCurrent() > 0) {
 				working[i].settimeCurrent( working[i].gettimeCurrent() - 1.0);
@@ -782,7 +783,7 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 
 
 
-	//output
+	//output to csv file
 	ofstream oFile;
 	oFile.open("output.csv");
 
@@ -815,42 +816,37 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 			GPUnum++;
 		}
 	}
-	//cout << "the number of finished short job:" << Snum << endl;
-	//cout << "the number of finished medium job:" << Mnum << endl;
-	//cout << "the number of finished large job:" << Lnum << endl;
-	//cout << "the number of finished GPU job:" << GPUnum << endl;
-
+	
+	//output the naumber of each type jobs
 	oFile << "the number of finished short job:" << "," << Snum << endl;
 	oFile << "the number of finished medium job:" << "," << Mnum << endl;
 	oFile << "the number of finished large job:" << "," << Lnum << endl;
 	oFile << "the number of finished GPU job:" << "," << GPUnum << endl;
 
 
-	for (int i = 0; i < finishNum+1; i++) {
-		//cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
-		//cout << Finish[i].gettimeGeneration() << endl;
-	}
 	
-	//cout << "average waiting time :" << aveWaiting << endl;
+	
+	
 	oFile << "average waiting time :" << "," << aveWaiting << endl;
-	//cout << "average job time: " << avejobtime << endl;
+
 	oFile << "average job time: " << "," << avejobtime << endl;
-	//cout << "average turnaround time: " << aveAround << endl;
+	
 	oFile<<"average turnaround time: " <<","<< aveAround << endl;
-	//cout << "timecost : " << timecost << endl;
+
 	oFile<<"timecost : "<<","<< timecost << endl;
 	
-	//cout << "earn money:" << finishNum * avejobtime * 2 * 2 << endl;
+	
 	oFile<<"earn money:"<<","<< finishNum * avejobtime * 2 * 2 << endl;
-	//cout << "cost money:" << timecost * 120 * 1 << endl;
+
 	oFile << "cost money:" <<","<< timecost * 120 * 1 << endl;
 
+
+	//Output whether the program is profitable
 	if ((finishNum * avejobtime * 2 * 2) > (timecost * 120 * 1)) {
-		//cout << "profit" << endl;
+		
 		oFile << "profit" << endl;
 	}
 	else {
-		//cout << "loss" << endl;
 		oFile << "loss" << endl;
 	}
 
