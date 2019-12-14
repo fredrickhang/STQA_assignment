@@ -1,0 +1,13 @@
+userType,jobType,jobProcesser,useGPU,userResource
+Mrfff,short,16,n,3
+IT,medium,16,n,4
+Lrff,largedd,16,n,2
+IT,short,16,n,3
+Sr,short,16,n,6
+IT,medium,16,n,9
+IT,short,16,y,5
+Ms,large,16,n,20
+IT,medium,32,y,2
+IT,short,32,n,7
+Ls,short,32,n,8
+IT,medium,32,n,9

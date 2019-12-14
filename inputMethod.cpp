@@ -47,7 +47,11 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 		inputjob.setjobType(job[1]);
 		inputjob.setjobProcesser(atoi(job[2].c_str()));
 		inputjob.setuseGPU(job[3]);
+		if (job[0]!="IT"&& job[0] != "Sr" && job[0] != "Mr" && job[0] != "Lr" && job[0] != "SS" && job[0] != "Ms" && job[0] != "Ls") {
+			cout << "data wrong, please insert right data" << endl;
+			break;
 		
+		}
 		if (job[1]=="short") {
 			num=num+1;
 			waitTime = 60*(1/(num));
@@ -79,18 +83,24 @@ queue<Job> inputMethod(queue<Job> jobList1) {
 			inputjob.setwaitingTime(ceil(waitTime));
 		
 		}
+		else {
+			cout << "data wrong, please insert right data" << endl;
+			break;
+		}
 		inputjob.setjobID(k+1);
 		inputjob.setResource(atoi(job[4].c_str()));
 		jlist.push(inputjob);
 	}
 	bool button = true;
 	while (button) {
-		jobList1.push(jlist.front());
-		jlist.pop();
 		if (jlist.empty()) {
 		
 			button = false;
+			break;
 		}
+		jobList1.push(jlist.front());
+	
+		jlist.pop();
 	}
 	
 
