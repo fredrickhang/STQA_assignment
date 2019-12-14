@@ -131,6 +131,8 @@
     <ClCompile Include="manageMethod.cpp" />
     <ClCompile Include="resource.cpp" />
     <ClCompile Include="stringSplitTools.cpp" />
+    <ClCompile Include="testJobDivide.cpp" />
+    <ClCompile Include="testWaitingTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hugeManageMethod.h" />
@@ -140,6 +142,8 @@
     <ClInclude Include="manageMethod.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stringSplitTools.h" />
+    <ClInclude Include="testJobDivide.h" />
+    <ClInclude Include="testWaitingTime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

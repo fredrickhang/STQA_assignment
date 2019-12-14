@@ -6,6 +6,7 @@
 #include"job.h"
 #include"manageMethod.h"
 #include"resource.h"
+#include <fstream>
 using namespace std;
 
 void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Resource Mr,Resource Sr,Resource Ls,Resource Ms,Resource Ss) {
@@ -782,17 +783,76 @@ void manageMethod(queue<Job> joblist,Center machine,Resource IT,Resource Lr,Reso
 
 
 	//output
-	cout << "the number of the jobs: " << finishNum +1<< endl;
+	ofstream oFile;
+	oFile.open("ouput.csv");
+
+
+	//cout << "the number of the jobs: " << finishNum << endl;
+	oFile << "the number of the jobs: " <<","<< finishNum << endl;
+
+	Snum = 0;
+	Mnum = 0;
+	Lnum = 0;
+	GPUnum = 0;
+	for (int i = 0; i <= finishNum; i++) {
+		
+		if (Finish[i].getjobType() == "short" && Finish[i].getuseGPU() == "n") {
+			
+			Snum++;
+		}
+		
+		else if (Finish[i].getjobType() == "medium" && Finish[i].getuseGPU() == "n") {
+			
+			Mnum++;
+		}
+		
+		else if (Finish[i].getjobType() == "large" && Finish[i].getuseGPU() == "n") {
+			
+			Lnum++;
+		}
+		else if (Finish[i].getuseGPU() == "y") {
+			
+			GPUnum++;
+		}
+	}
+	//cout << "the number of finished short job:" << Snum << endl;
+	//cout << "the number of finished medium job:" << Mnum << endl;
+	//cout << "the number of finished large job:" << Lnum << endl;
+	//cout << "the number of finished GPU job:" << GPUnum << endl;
+
+	oFile << "the number of finished short job:" << "," << Snum << endl;
+	oFile << "the number of finished medium job:" << "," << Mnum << endl;
+	oFile << "the number of finished large job:" << "," << Lnum << endl;
+	oFile << "the number of finished GPU job:" << "," << GPUnum << endl;
+
 
 	for (int i = 0; i < finishNum; i++) {
-		cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
+		//cout <<"job id:"<< Finish[i].getjobID() << "job type"<<Finish[i].getjobType()<< endl;
 		//cout << Finish[i].gettimeGeneration() << endl;
 	}
 	
-	cout << "average waiting time :" << aveWaiting << endl;
-	cout << "average job time: " << avejobtime << endl;
-	cout << "average turnaround time: " << aveAround << endl;
-
-	cout << "timecost : " << timecost << endl;
+	//cout << "average waiting time :" << aveWaiting << endl;
+	oFile << "average waiting time :" << "," << aveWaiting << endl;
+	//cout << "average job time: " << avejobtime << endl;
+	oFile << "average job time: " << "," << avejobtime << endl;
+	//cout << "average turnaround time: " << aveAround << endl;
+	oFile<<"average turnaround time: " <<","<< aveAround << endl;
+	//cout << "timecost : " << timecost << endl;
+	oFile<<"timecost : "<<","<< timecost << endl;
 	
+	//cout << "earn money:" << finishNum * avejobtime * 2 * 2 << endl;
+	oFile<<"earn money:"<<","<< finishNum * avejobtime * 2 * 2 << endl;
+	//cout << "cost money:" << timecost * 120 * 1 << endl;
+	oFile << "cost money:" <<","<< timecost * 120 * 1 << endl;
+
+	if ((finishNum * avejobtime * 2 * 2) > (timecost * 120 * 1)) {
+		//cout << "profit" << endl;
+		oFile << "profit" << endl;
+	}
+	else {
+		//cout << "loss" << endl;
+		oFile << "loss" << endl;
+	}
+
+	oFile.close();
 }

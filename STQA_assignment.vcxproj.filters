@@ -39,6 +39,12 @@
     <ClCompile Include="InitializeResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testJobDivide.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="testWaitingTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="job.h">
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hugeManageMethod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testJobDivide.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="testWaitingTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
